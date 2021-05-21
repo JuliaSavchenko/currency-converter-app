@@ -1,10 +1,13 @@
 import React from 'react';
+import CurrencyRow from '../CurrencyRow';
 
 export default function CurrencyConverter() {
 
     return (
-        <div>
-           <span>RUB to USD</span>
-        </div>
+        <>
+            <h2>Convert</h2>
+            <CurrencyRow label='From'/>
+            <CurrencyRow label='To'/>
+        </>
     )
 } 
