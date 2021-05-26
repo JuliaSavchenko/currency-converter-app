@@ -1,6 +1,10 @@
 import { Switch, Route, Link } from 'react-router-dom';
 import links from './links';
 import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
 
 const useStyles = makeStyles({
   contentWrapper: {
@@ -9,15 +13,9 @@ const useStyles = makeStyles({
     alignItems: 'center',
     flexDirection: 'column',
   },
-  menuWrapper: {
-    display:'flex',
-    justifyContent: 'space-around',
-  },
-  menuItem: {
-    fontFamily: 'Poppins',
-  },
-  itemWrapper: {
-
+  App: {
+    width:'1000px',
+    margin:'0 auto'
   }
 });
 
@@ -26,18 +24,18 @@ function App() {
   const classes = useStyles();
 
   return (
-    <div className='App'>
-      <div className={classes.menuWrapper}>
+    <div className={classes.App}>
+      <AppBar position='static'>
+        <Tabs >
           {links.map(link => {
             return(
-              <div className={classes.itemWrapper} key={link.title}>
                 <Link to={link.href}>
-                    <h4 className={classes.menuItem}>{link.title}</h4>
+                    <Tab label={link.title}>{link.title}</Tab>
                 </Link>
-              </div>
             )
           })}
-      </div>
+          </Tabs>
+      </AppBar>
       <div className={classes.contentWrapper}>
         <Switch>
           {links.map(link => {
