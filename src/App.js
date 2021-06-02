@@ -1,4 +1,4 @@
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import links from './links';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -26,7 +26,7 @@ function App() {
   return (
     <div className={classes.App}>
       <AppBar position='static'>
-        <Tabs >
+        <Tabs>
           {links.map(link => {
             return(
                 <Link to={link.href}>
@@ -43,6 +43,7 @@ function App() {
               <Route path={link.href} component={link.component}/>
             )
           })}
+          <Redirect from='/' to='/currency'></Redirect>
         </Switch> 
       </div>
       
